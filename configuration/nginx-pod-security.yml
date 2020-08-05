@@ -1,0 +1,18 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: myapp-pod
+
+spec:
+  securityContext:
+    runAsUser: 1000
+  containers:
+    - name: nginx-containers
+      image: nginx
+      securityContext:
+        runAsUser: 1000
+        capabilities:
+          add: ["MAC_ADMIN"]
+# capabilities are only available at the container level
